@@ -1,0 +1,49 @@
+.sn-header {
+    display: flex;
+    flex-direction: column;
+    padding-left: 104px;
+    margin: 40px auto 56px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sn-header__subtitle{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 1.33;
+    color: rgba(26, 27, 34, 0.5); 
+    margin: 0 0 28px;
+}
+
+.sn-header__title {
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 1.15;
+    color: #1A1B22;
+    max-width: 530px;
+    margin: 0 0 30px;
+}
+
+.sn-header__keywords {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #1A1B22;
+    margin: 0;
+}
+
+.sn-header__span {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.33;
+    margin: 0;
+}
+

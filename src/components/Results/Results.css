@@ -1,0 +1,41 @@
+.results {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1440px;
+    min-height: 974px;
+    background: #F5F6F7;
+    padding: 80px 104px;
+    box-sizing: border-box;
+}
+
+.results__title {
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 1.15;
+    color: #1A1B22;
+    margin: 0 0 64px;
+}
+
+.results__btn {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    background: #FFFFFF;
+    border-radius: 80px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #1A1B22;
+    width: 288px;
+    height: 64px;
+    outline: none;
+    margin-top: 64px;
+}
