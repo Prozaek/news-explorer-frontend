@@ -16,26 +16,31 @@
     font-size: 40px;
     line-height: 1.15;
     color: #1A1B22;
-    margin: 0 0 64px;
+    margin: 0;
 }
 
 .results__btn {
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    background: #FFFFFF;
+    align-items: center;
     border-radius: 80px;
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
-    display: flex;
-    align-items: center;
     text-align: center;
     color: #1A1B22;
     width: 288px;
     height: 64px;
     outline: none;
-    margin-top: 64px;
+    border: none;
+    background: #FFFFFF;
 }
+
+.results__btn:hover{
+    opacity: .9;
+    cursor: pointer;
+}
+

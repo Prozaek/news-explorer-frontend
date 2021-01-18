@@ -1,27 +1,26 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import './NewsCard.css';
-import { check, trash } from "../../utils/constants"
+import { checkBox, trash, checkMarked } from "../../utils/constants"
 
 function NewsCard() {
   const location = useLocation();
   const locationPathMain = location.pathname === "/";
-  const checkMarked = "news-card__check_marked"
- const handleClick = () => setIsToggleOn(true);
-  const classNameBox = () => {
-    if(locationPathMain ){
-     return isToggleOn ? checkMarked : check; 
-     }
-     return  trash}
- 
-const [isToggleOn, setIsToggleOn] = React.useState(false);
 
+  const checkBoxClassName = () => locationPathMain ? checkBox : trash;
+  const handleClick = (e) => e.target.className === checkBox ? e.target.className = checkMarked : e.target.className = checkBox; 
+
+  function handleSubmit(e) {
+    e.preventDefault();
+   
+    
+  }
 
   return (
     <section className="news-card">
         <div className="news-card__img-place">
         { !locationPathMain ? <div className="news-card__keyword">Природа</div> : <div></div>}
-        <div onClick={handleClick} className={classNameBox()}></div>
+        <button type="button" aria-label="Кнопка выбора карточек" onSubmit={handleSubmit} onClick={locationPathMain && handleClick } className={checkBoxClassName()}></button>
         </div>
         <div className="news-card__text-place">
             <p className="news-card__date">2 августа, 2019</p>

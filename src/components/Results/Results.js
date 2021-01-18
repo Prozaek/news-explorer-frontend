@@ -7,7 +7,7 @@ function Results() {
     <section className="results">
         <h2 className="results__title">Результаты поиска</h2>
         <NewsCardList />
-        <button className="results__btn">Показать еще</button>
+        <button className="results__btn" aria-label="Кнопка добавления карточек">Показать еще</button>
     </section>
   );
 }

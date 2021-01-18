@@ -5,6 +5,7 @@ import NewsCardList from "../NewsCardList/NewsCardList"
 import './SavedNews.css';
 
 function SavedNews() {
+
   return (
     <div className="saved-news">
       <Header />

@@ -2,10 +2,10 @@ import React from "react";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 
-function Header() {
+function Header({loggedIn, onLogin, onSignOut, onOpenAuthorization, isAuthorBtnChange}) {
     return (
         <header className="header">
-            <Navigation />
+            <Navigation loggedIn={loggedIn} onSignOut={onSignOut} onLogin={onLogin} onOpenAuthorization={onOpenAuthorization} isAuthorBtnChange={isAuthorBtnChange}/>
         </header>
     );
 }

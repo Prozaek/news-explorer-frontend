@@ -8,6 +8,10 @@ function NewsCardList() {
         <NewsCard />
         <NewsCard />
         <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
     </section>
   );
 }
