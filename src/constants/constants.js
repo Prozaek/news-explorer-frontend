@@ -1,5 +1,8 @@
 //NAVIGATION
 
+export const navigation  = "navigation"
+export const  navigationDisable = "navigation navigation_disable"
+
 // элементы меню белого цвета
 export const logoWhite = "navigation__logo";
 export const mainWhite = "navigation__main-link";
@@ -9,6 +12,12 @@ export const savedNewsWhite = "navigation__saved-news";
 export const logoBlack = "navigation__logo navigation__logo_black";
 export const mainBlack = "navigation__main-link navigation__main-link_black";
 export const savedNewsBlack = "navigation__saved-news navigation__saved-news_black";
+
+// кнопка мобильного меню
+export const butterWhite = "navigation__butter";
+export const butterBlack = "navigation__butter navigation__butter_black"
+
+export const menuBtnCloseWhite = "navigation__butter navigation__menu-closed_white";
 
 // кнопка выхода на странице main
 export const btnLogoutMain = "navigation__btn-logout navigation__btn-logout_main";
@@ -35,3 +44,6 @@ export const checkMarked = "news-card__check-marked";
 export const facebookUrl = "https://www.facebook.com/";
 export const githubUrl = "https://github.com/";
 export const yandexUrl = "https://praktikum.yandex.ru";
+
+
+//

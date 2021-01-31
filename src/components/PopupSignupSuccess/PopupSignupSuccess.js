@@ -4,7 +4,9 @@ import "./PopupSignupSuccess.css";
 
 const PopupSignupSuccess = ({isOpenSignSucc, onClose, onOpenAuthorization}) => {
 
-    const handleClick = () => onClose() & onOpenAuthorization(true);
+    const handleClick = () => onClose() & onOpenAuthorization();
+
+
 
   return (
     <Popup

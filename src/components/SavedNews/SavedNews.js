@@ -4,13 +4,13 @@ import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader"
 import NewsCardList from "../NewsCardList/NewsCardList"
 import './SavedNews.css';
 
-function SavedNews() {
+function SavedNews({openBurgerMenu, cards}) {
 
   return (
     <div className="saved-news">
-      <Header />
+      <Header openBurgerMenu={openBurgerMenu} />
       <SavedNewsHeader />
-      <NewsCardList />
+      <NewsCardList cards={cards} />
     </div>
   );
 }

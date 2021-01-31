@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import git from "../../images/svg/git.svg";
 import facebook from "../../images/svg/facebook.svg";
 import "./Footer.css";
-import {facebookUrl, githubUrl, yandexUrl} from "../../utils/constants"
+import {facebookUrl, githubUrl, yandexUrl} from "../../constants/constants"
 
 
 function Footer() {
     return (
         <footer className="footer">
             <p className="footer__copyright">&copy; 2020 Supersite, Powered by News API</p>
-            <nav>
+            <nav className="footer__nav">
                 <ul className="footer__links">
                     <li className="footer__li">
                         <Link className="footer__link" to="/">
@@ -22,6 +22,8 @@ function Footer() {
                             Яндекс.Практикум
                         </a>
                     </li>
+                </ul>
+                <ul className="footer__social">
                     <li className="footer__li">
                         <a className="footer__link" href={githubUrl}>
                             <img src={git} className="footer__icon" alt="Логотип Гит" />
