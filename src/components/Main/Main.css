@@ -4,7 +4,7 @@
     margin: 0 auto;
     max-width: 1440px;
     background-color: white;
-    background-image: url('../../images/jpg/georgia.jpg');
+    background-image: url("../../images/jpg/georgia.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -46,11 +46,10 @@
     }
 }
 
-
 @media (max-width: 400px) {
     .main {
         background-size: contain;
-        background-image: url('../../images/jpg/georgia-small.jpg');
+        background-image: url("../../images/jpg/georgia-small.jpg");
         max-width: 400px;
     }
 }
@@ -62,19 +61,13 @@
     box-sizing: border-box;
 }
 
-@media ( min-width: 1440px ) {
+@media (min-width: 1440px) {
     .main__title-container {
         margin: 80px auto 64px;
     }
 }
 
-/* @media ( max-width: 768px ) {
-    .main__title-container {
-        margin: 38px auto 48px;
-    }
-} */
-
-@media ( max-width: 400px ) {
+@media (max-width: 400px) {
     .main__title-container {
         margin: 30px 16px 122px;
         max-width: 400px;
@@ -87,13 +80,12 @@
     font-weight: normal;
     font-size: calc(36px + (60 - 36) var(--calc768));
     line-height: calc(40px + (64 - 40) var(--calc768));
-    color: #FFFFFF;
+    color: #ffffff;
     width: calc(385px + (608 - 385) var(--calc768));
     margin: 0 0 calc(16px + (32 - 16) var(--calc768));
 }
 
-@media ( min-width: 1440px ) {
-    
+@media (min-width: 1440px) {
     .main__title {
         font-size: 60px;
         line-height: 64px;
@@ -102,18 +94,7 @@
     }
 }
 
-/* @media ( max-width: 768px ) {
-    
-    .main__title {
-        font-size: 36px;
-        line-height: 40px;
-        margin: 0 0 16px;
-        max-width: 385px;
-    }
-} */
-
-@media ( max-width: 450px ) {
-    
+@media (max-width: 450px) {
     .main__title {
         width: 287px;
     }
@@ -125,25 +106,18 @@
     font-weight: normal;
     font-size: 18px;
     line-height: 24px;
-    color: #FFFFFF;
+    color: #ffffff;
     width: calc(452px + (545 - 452) var(--calc768));
     margin: 0;
 }
 
-
-@media ( min-width: 1440px ) {
+@media (min-width: 1440px) {
     .main__subtitle {
         width: 545px;
     }
 }
 
-/* @media ( max-width: 768px ) {
-    .main__subtitle {
-        max-width: 452px;
-    }
-} */
-
-@media ( max-width: 450px ) {
+@media (max-width: 450px) {
     .main__subtitle {
         max-width: 288px;
     }

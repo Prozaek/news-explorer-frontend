@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import git from "../../images/svg/git.svg";
 import facebook from "../../images/svg/facebook.svg";
 import "./Footer.css";
-import {facebookUrl, githubUrl, yandexUrl} from "../../constants/constants"
-
+import { facebookUrl, githubUrl, yandexUrl } from "../../constants/constants";
 
 function Footer() {
     return (
@@ -18,19 +17,19 @@ function Footer() {
                         </Link>
                     </li>
                     <li className="footer__li">
-                        <a className="footer__link" href={yandexUrl}>
+                        <a target="_blank" rel="noreferrer" className="footer__link" href={yandexUrl}>
                             Яндекс.Практикум
                         </a>
                     </li>
                 </ul>
                 <ul className="footer__social">
                     <li className="footer__li">
-                        <a className="footer__link" href={githubUrl}>
+                        <a target="_blank" rel="noreferrer" className="footer__link" href={githubUrl}>
                             <img src={git} className="footer__icon" alt="Логотип Гит" />
                         </a>
                     </li>
                     <li className="footer__li">
-                        <a className="footer__link" href={facebookUrl}>
+                        <a target="_blank" rel="noreferrer" className="footer__link" href={facebookUrl}>
                             <img src={facebook} className="footer__icon" alt="Логотип Фейсбук" />
                         </a>
                     </li>

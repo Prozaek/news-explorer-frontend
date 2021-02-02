@@ -5,8 +5,7 @@ import logoutIconBlack from "../../images/svg/logout.svg";
 import logoutIconWhite from "../../images/svg/logout_white.svg";
 import { logoWhite, logoBlack, savedNewsWhite, savedNewsBlack, mainWhite, mainBlack, btnLogoutMain, btnLogoutSaved, butterBlack, butterWhite, navigationDisable, navigation } from "../../constants/constants";
 
-function Navigation({ loggedIn, onLogin, onSignOut, onOpenAuthorization, isAuthorBtnChange, openBurgerMenu, isOpenAuthor, isOpenRegistr, isOpenSignSucc }) {
-
+function Navigation({ loggedIn, onLogin, onSignOut, onOpenAuthorization, isAuthorBtnChange, openBurgerMenu, isOpenAuthor, isOpenRegistr, isOpenSignSucc, openSavedBurgerMenu }) {
     const history = useHistory();
     const location = useLocation();
     const locationPathSavedNews = location.pathname === "/saved-news";
@@ -22,12 +21,10 @@ function Navigation({ loggedIn, onLogin, onSignOut, onOpenAuthorization, isAutho
         isAuthorBtnChange ? setLogoutBtn(false) : !locationPathSavedNews && setLogoutBtn(true);
     }, [isAuthorBtnChange, locationPathSavedNews]);
 
-    
     // открывает черное мобильное меню
     function handleClickBurgerMenu(e) {
-        (e.target.className === butterBlack || butterWhite) ?
-        openBurgerMenu(true)    
-        : openBurgerMenu(false);
+        e.target.className === butterBlack && openSavedBurgerMenu(true);
+        e.target.className === butterWhite && openBurgerMenu(true);
     }
 
     // делает невидимой панель navigation если открыты попапы авторизации или регистрации и при этом ширина окна меньше 400 px

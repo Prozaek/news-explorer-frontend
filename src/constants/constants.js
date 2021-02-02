@@ -1,7 +1,7 @@
 //NAVIGATION
 
-export const navigation  = "navigation"
-export const  navigationDisable = "navigation navigation_disable"
+export const navigation = "navigation";
+export const navigationDisable = "navigation navigation_disable";
 
 // элементы меню белого цвета
 export const logoWhite = "navigation__logo";
@@ -15,7 +15,7 @@ export const savedNewsBlack = "navigation__saved-news navigation__saved-news_bla
 
 // кнопка мобильного меню
 export const butterWhite = "navigation__butter";
-export const butterBlack = "navigation__butter navigation__butter_black"
+export const butterBlack = "navigation__butter navigation__butter_black";
 
 export const menuBtnCloseWhite = "navigation__butter navigation__menu-closed_white";
 
@@ -24,7 +24,6 @@ export const btnLogoutMain = "navigation__btn-logout navigation__btn-logout_main
 
 // кнопка выхода на странице saved-news
 export const btnLogoutSaved = "navigation__btn-logout";
-
 
 // RESULTS_grid and SAVED-NEWS_grid
 
@@ -37,13 +36,11 @@ export const trash = "news-card__trash";
 // класс синего флажка
 export const checkMarked = "news-card__check-marked";
 
-
 // FOOTER
 
 // ссылки на соцсети в футере
 export const facebookUrl = "https://www.facebook.com/";
 export const githubUrl = "https://github.com/";
 export const yandexUrl = "https://praktikum.yandex.ru";
-
 
 //

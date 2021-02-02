@@ -3,13 +3,13 @@
     grid-template-columns: repeat(auto-fit, calc(224px + (400 - 224) var(--calc768)));
     justify-content: center;
     gap: calc(8px + (16 - 8) var(--calc768));
-    background: #F5F6F7;
+    background: #f5f6f7;
     width: 100%;
     padding: calc(32px + (64 - 32) var(--calc768)) 0;
     box-sizing: border-box;
 }
 
-@media ( min-width: 1440px ) {
+@media (min-width: 1440px) {
     .news-list {
         grid-template-columns: repeat(auto-fit, 400px);
         gap: 16px;
@@ -17,7 +17,7 @@
     }
 }
 
-@media ( max-width: 768px ) {
+@media (max-width: 768px) {
     .news-list {
         grid-template-columns: repeat(auto-fit, 224px);
         gap: 8px;
@@ -25,7 +25,7 @@
     }
 }
 
-@media ( max-width: 493px ) {
+@media (max-width: 493px) {
     .news-list {
         grid-template-columns: repeat(auto-fit, 288px);
         gap: 10px;
