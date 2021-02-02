@@ -9,12 +9,13 @@ function SearchForm({ setKeyword }) {
 
     React.useEffect(()=> {
         setIsValid(true);
-    }, [setIsValid])
+    }, [setIsValid, resetForm])
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setKeyword(search);
         resetForm();
+        setIsValid(true)
     };
 
     return (

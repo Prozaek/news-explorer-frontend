@@ -3,11 +3,11 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import About from "../About/About";
 import Results from "../Results/Results";
-// import Preloader from "../Preloader/Preloader"
-// import NotFound from "../NotFound/NotFound"
+import Preloader from "../Preloader/Preloader"
+import NotFound from "../NotFound/NotFound"
 import "./Main.css";
 
-function Main({ loggedIn, onLogin, onSignOut, onOpenAuthorization, isAuthorBtnChange, onClose, openBurgerMenu, isOpenAuthor, isOpenRegistr, isOpenSignSucc, cards, setKeyword, keyword }) {
+function Main({ loggedIn, onLogin, onSignOut, onOpenAuthorization, isAuthorBtnChange, onClose, openBurgerMenu, isOpenAuthor, isOpenRegistr, isOpenSignSucc, cards, setKeyword, keyword, isLoading, noResult }) {
     return (
         <section className="main">
             <Header
@@ -28,9 +28,10 @@ function Main({ loggedIn, onLogin, onSignOut, onOpenAuthorization, isAuthorBtnCh
             </div>
 
             <SearchForm setKeyword={setKeyword} />
-            {/* <Preloader /> */}
-            {/* <NotFound /> */}
-            <Results cards={cards} keyword={keyword} />
+            {keyword === '' ? <></> 
+             : isLoading ? <Preloader />
+             : noResult ?  <NotFound />
+             : <Results cards={cards} keyword={keyword} /> }
             <About />
         </section>
     );

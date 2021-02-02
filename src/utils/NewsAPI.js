@@ -11,7 +11,7 @@ class Api {
         return res.json();
     }
   
-    getArticles(keyword) {
+    search(keyword) {
         return fetch(`${this._baseUrl}/v2/everything?q=Apple&from=2021-01-24&to=2021-01-31&sortBy=popularity&apiKey=91df3880031b4dabba1ae1c6a6829e73`, {
             headers: this._headers,
         }).then(this._getResponseData);

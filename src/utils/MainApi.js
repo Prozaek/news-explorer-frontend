@@ -12,7 +12,7 @@ class Api {
     }
 
     getArticles(keyword) {
-        return fetch(`${this._baseUrl}/v2/everything?q=${keyword}&from=2021-01-24&to=2021-01-31&sortBy=popularity&apiKey=6358c183900748139723e76fc8aada6a`, {
+        return fetch(`${this._baseUrl}/v2/everything?q=${keyword}&from=2021-01-24&to=2021-01-31&sortBy=popularity&apiKey=91df3880031b4dabba1ae1c6a6829e73`, {
             headers: this._headers,
         }).then(this._getResponseData);
     }

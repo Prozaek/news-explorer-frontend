@@ -21,13 +21,17 @@ function App() {
 
     // стейты для авторизации
     const [loggedIn, setLoggedIn] = React.useState(false);
-    //  const [email, setEmail] = React.useState("");
 
     // cтейт срабатывает при нажатии на кнопку войти в окне авторизации и переключает кнопку "авторизация" на кнопку "выход"
     const [isAuthorBtnChange, setIsAuthorBtnChange] = React.useState(false);
 
     // cтейт для карточек статей
-    const [cards, setCards] = React.useState([]);
+    const [cards, setCards] = React.useState({});
+
+    // стейт спиннера
+    const [isLoading, setIsLoading] = React.useState(false)
+    // стейт компонента "NotFound"
+    const [noResult, setNoResult] = React.useState(false)
 
     const handleSignOut = () => {
         setLoggedIn(false);
@@ -39,18 +43,22 @@ function App() {
 
     // получает фразу из поля поиска
     const [keyword, setKeyword] = React.useState("");
-
+    
     // получает данные карточки и юзера
     React.useEffect(() => {
+        setIsLoading(true);
         keyword !== "" &&
             MainApi.getArticles(keyword)
-
                 .then((results) => {
-                    const cardsData = results.articles;
-
-                    setCards(cardsData);
+                    setNoResult(false)
+                    setCards(results.articles)
+                    setIsLoading(false);
+                    results.totalResults  === 0 &&
+                    setNoResult(true)
                 })
-                .catch((err) => {});
+                .catch((err) => {
+                });
+               
     }, [keyword]);
 
     // эффект закрытия эскейпом
@@ -98,6 +106,9 @@ function App() {
                         cards={cards}
                         setKeyword={setKeyword}
                         keyword={keyword}
+                        isLoading={isLoading}
+                        noResult={noResult}
+                        setNoResult={setNoResult}
                     />
                 </Route>
                 <Route path="/saved-news">
