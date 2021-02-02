@@ -4,7 +4,7 @@
   max-width: 1440px;
   height: 80px;
   box-sizing: border-box;
-  padding: 0 calc(40px + (104 - 40) var(--calc768));
+  padding: 0 calc(40px + (104 - 40) * ((100vw - 768px) / (1440 - 768)));
   box-shadow: inset 0px -1px 0px #d1d2d6;
 }
 

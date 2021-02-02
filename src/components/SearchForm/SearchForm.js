@@ -1,34 +1,22 @@
 import React from "react";
 import "./SearchForm.css";
+import { useFormWithValidation } from "../../utils/FormValidation";
 
 function SearchForm({ setKeyword }) {
-    const [value, setValue] = React.useState("");
-    const [errors, setErrors] = React.useState({});
-    const [isValid, setIsValid] = React.useState(false);
+    const { values, handleChange, errors, isValid, resetForm, setIsValid } = useFormWithValidation();
+    
+    const { search } = values;
 
-    function handleChange(e) {
-        const target = e.target;
-        const value = target.value;
-        const name = target.name;
-        setValue(value);
-        setErrors({ ...errors, [name]: target.validationMessage });
-        setIsValid(target.closest("form").checkValidity());
-    }
-
-    const resetForm = React.useCallback(
-        (newValue = "", newErrors = "", newIsValid = false) => {
-            setValue(newValue);
-            setErrors(newErrors);
-            setIsValid(newIsValid);
-        },
-        [setValue, setIsValid, setErrors]
-    );
+    React.useEffect(()=> {
+        setIsValid(true);
+    }, [setIsValid])
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setKeyword(search);
         resetForm();
-        setKeyword(value);
     };
+
     return (
         <form className="search" method="GET" onSubmit={handleSubmit}>
             <label className="search__label">
@@ -38,11 +26,12 @@ function SearchForm({ setKeyword }) {
                 type="search" 
                 className="search__input" 
                 placeholder="Введите тему новости" 
-                id="search" name="search" 
-                value={value || ""} 
+                id="search" 
+                name="search" 
+                value={search || ""} 
                 onChange={handleChange} 
                 pattern="^[a-zA-Z\s]+$" />
-                <span id="search-input-error" className={errors.search ? "search__input-error search__input-error_visible" : "search__input-error"}>
+                <span id="search-input-error" className={errors ? "search__input-error search__input-error_visible" : "search__input-error"}>
                     {errors.search === "Введите данные в указанном формате." ? "Смените пожалуйста раскладку клавиатуры" : errors.search}
                 </span>
             </label>

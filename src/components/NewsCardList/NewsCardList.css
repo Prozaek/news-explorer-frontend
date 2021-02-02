@@ -1,11 +1,11 @@
 .news-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, calc(224px + (400 - 224) var(--calc768)));
+    grid-template-columns: repeat(auto-fit, calc(224px + (400 - 224) * ((100vw - 768px) / (1440 - 768))));
     justify-content: center;
-    gap: calc(8px + (16 - 8) var(--calc768));
+    gap: calc(8px + (16 - 8) * ((100vw - 768px) / (1440 - 768)));
     background: #f5f6f7;
     width: 100%;
-    padding: calc(32px + (64 - 32) var(--calc768)) 0;
+    padding: calc(32px + (64 - 32) * ((100vw - 768px) / (1440 - 768))) 0;
     box-sizing: border-box;
 }
 

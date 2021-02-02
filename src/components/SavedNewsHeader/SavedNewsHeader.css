@@ -1,7 +1,7 @@
 .sn-header {
     display: flex;
     flex-direction: column;
-    padding: calc(24px + (40 - 24) var(--calc768)) calc(40px + (104 - 40) var(--calc768)) calc(32px + (56 - 32) var(--calc768));
+    padding: calc(24px + (40 - 24) * ((100vw - 768px) / (1440 - 768))) calc(40px + (104 - 40) * ((100vw - 768px) / (1440 - 768))) calc(32px + (56 - 32) * ((100vw - 768px) / (1440 - 768)));
     width: 100%;
     box-sizing: border-box;
 }
@@ -28,10 +28,10 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    line-height: calc(1.7 + (1.5 - 1.7) var(--calc768));
-    font-size: calc(14px + (18 - 14) var(--calc768));
+    line-height: calc(1.7 + (1.5 - 1.7) * ((100vw - 768px) / (1440 - 768)));
+    font-size: calc(14px + (18 - 14) * ((100vw - 768px) / (1440 - 768)));
     color: rgba(26, 27, 34, 0.5);
-    margin: 0 0 calc(16px + (28 - 16) var(--calc768));
+    margin: 0 0 calc(16px + (28 - 16) * ((100vw - 768px) / (1440 - 768)));
 }
 
 @media (min-width: 1440px) {
@@ -62,11 +62,11 @@
     font-family: Roboto Slab;
     font-style: normal;
     font-weight: normal;
-    font-size: calc(30px + (40 - 30) var(--calc768));
-    line-height: calc(1.33 + (1.5 - 1.33) var(--calc768));
+    font-size: calc(30px + (40 - 30) * ((100vw - 768px) / (1440 - 768)));
+    line-height: calc(1.33 + (1.5 - 1.33) * ((100vw - 768px) / (1440 - 768)));
     color: #1a1b22;
     max-width: 400px;
-    margin: 0 0 calc(16px + (30 - 16) var(--calc768));
+    margin: 0 0 calc(16px + (30 - 16) * ((100vw - 768px) / (1440 - 768)));
 }
 
 @media (min-width: 1440px) {
@@ -95,8 +95,8 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: calc(14px + (18 - 14) var(--calc768));
-    line-height: calc(1.7 + (1.33 - 1.14) var(--calc768));
+    font-size: calc(14px + (18 - 14) * ((100vw - 768px) / (1440 - 768)));
+    line-height: calc(1.7 + (1.33 - 1.14) * ((100vw - 768px) / (1440 - 768)));
     color: #1a1b22;
     margin: 0;
 }
@@ -121,8 +121,8 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: 700;
-    font-size: calc(14px + (18 - 14) var(--calc768));
-    line-height: calc(1.7 + (1.33 - 1.14) var(--calc768));
+    font-size: calc(14px + (18 - 14) * ((100vw - 768px) / (1440 - 768)));
+    line-height: calc(1.7 + (1.33 - 1.14) * ((100vw - 768px) / (1440 - 768)));
     margin: 0;
 }
 

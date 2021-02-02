@@ -11,7 +11,6 @@ class Api {
         return res.json();
     }
 
-    // получает карточки
     getArticles(keyword) {
         return fetch(`${this._baseUrl}/v2/everything?q=${keyword}&from=2021-01-24&to=2021-01-31&sortBy=popularity&apiKey=6358c183900748139723e76fc8aada6a`, {
             headers: this._headers,

@@ -4,15 +4,22 @@ import "./PopupRegistration.css";
 import { useFormWithValidation } from "../../utils/FormValidation";
 
 const PopupRegistration = ({ isOpenRegistr, onClose, onOpenAuthorization, setIsSignupSuccessPopupOpen }) => {
-    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+    // валидатор
+    const { values, handleChange, errors, isValid, resetForm, setIsValid } = useFormWithValidation();
     const { email, password, name } = values;
-    // const [resetAuthForm, setResetAuthForm]=React.useState(false)
+
+    // реcет формы
+    React.useEffect(() => {
+        !isOpenRegistr && resetForm();
+        setIsValid(true)
+    }, [isOpenRegistr, resetForm, setIsValid]);
+
 
     function handleSubmit(e) {
         e.preventDefault();
         onClose();
+        // открывает попап подтверждения регистрации
         setIsSignupSuccessPopupOpen();
-        resetForm();
     }
 
     return (
@@ -29,7 +36,14 @@ const PopupRegistration = ({ isOpenRegistr, onClose, onOpenAuthorization, setIsS
         >
             <label className="popup__label">
                 <span className="popup__input-title">Email</span>
-                <input id="mailRegistration-input" autoComplete="off" name="email" placeholder="Введите почту" required type="email" className="popup__input popup__input_mail-registration" value={email} onChange={handleChange} />
+                <input id="mailRegistration-input" 
+                autoComplete="off" 
+                name="email" 
+                placeholder="Введите почту" 
+                required type="email" 
+                className="popup__input popup__input_mail-registration" 
+                value={email || ''} 
+                onChange={handleChange} />
                 <span id="emailRegistration-input-error" className={errors ? "popup__input-error popup__input-error_visible" : "popup__input-error"}>
                     {errors.email}
                 </span>
@@ -46,7 +60,7 @@ const PopupRegistration = ({ isOpenRegistr, onClose, onOpenAuthorization, setIsS
                     minLength="2"
                     pattern="^[a-zA-Z\s]+$"
                     className="popup__input popup__input_password-registration"
-                    value={password}
+                    value={password || ''}
                     onChange={handleChange}
                 />
                 <span id="mailRegistration-input-error" className={errors ? "popup__input-error popup__input-error_visible" : "popup__input-error"}>
@@ -66,7 +80,7 @@ const PopupRegistration = ({ isOpenRegistr, onClose, onOpenAuthorization, setIsS
                     minLength="2"
                     maxLength="30"
                     className="popup__input popup__input_password-registration"
-                    value={name}
+                    value={name || ''}
                     onChange={handleChange}
                 />
                 <span id="mailRegistration-input-error" className={true ? "popup__input-error popup__input-error_visible" : "popup__input-error"}>

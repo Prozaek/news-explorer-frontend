@@ -8,7 +8,7 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    height: calc(150px + (272 - 150) var(--calc768));
+    height: calc(150px + (272 - 150) * ((100vw - 768px) / (1440 - 768)));
     width: 100%;
     background-image: url("../../images/jpg/image_06.jpg");
     border-radius: 5% 5% 0 0;
@@ -51,7 +51,7 @@
     width: 88px;
     height: 40px;
     align-items: center;
-    margin: calc(8px + (24 - 8) var(--calc768)) 0 0 calc(8px + (24 - 8) var(--calc768));
+    margin: calc(8px + (24 - 8) * ((100vw - 768px) / (1440 - 768))) 0 0 calc(8px + (24 - 8) * ((100vw - 768px) / (1440 - 768)));
 }
 
 @media (min-width: 1440px) {
@@ -81,7 +81,7 @@
     width: 40px;
     height: 40px;
     border-radius: 8px;
-    margin: calc(8px + (24 - 8) var(--calc768)) calc(8px + (24 - 8) var(--calc768)) 0 0;
+    margin: calc(8px + (24 - 8) * ((100vw - 768px) / (1440 - 768))) calc(8px + (24 - 8) * ((100vw - 768px) / (1440 - 768))) 0 0;
     cursor: pointer;
     outline: none;
     border: none;
@@ -125,7 +125,7 @@
     width: 40px;
     height: 40px;
     border-radius: 8px;
-    margin: calc(8px + (24 - 8) var(--calc768)) calc(8px + (24 - 8) var(--calc768)) 0 0;
+    margin: calc(8px + (24 - 8) * ((100vw - 768px) / (1440 - 768))) calc(8px + (24 - 8) * ((100vw - 768px) / (1440 - 768))) 0 0;
     cursor: pointer;
     outline: none;
     border: none;
@@ -153,7 +153,7 @@
 .news-card__check::after {
     content: "Войдите, чтобы сохранять статьи";
     position: absolute;
-    top: calc(8px + (24 - 8) var(--calc768));
+    top: calc(8px + (24 - 8) * ((100vw - 768px) / (1440 - 768)));
     right: 69px;
     justify-content: center;
     font-family: Roboto;
@@ -215,7 +215,7 @@
     width: 40px;
     height: 40px;
     border-radius: 8px;
-    margin: calc(8px + (24 - 8) var(--calc768)) calc(8px + (24 - 8) var(--calc768)) 0 0px;
+    margin: calc(8px + (24 - 8) * ((100vw - 768px) / (1440 - 768))) calc(8px + (24 - 8) * ((100vw - 768px) / (1440 - 768))) 0 0px;
     cursor: pointer;
     outline: none;
     border: none;
@@ -246,7 +246,7 @@
 .news-card__trash::before {
     content: "Убрать из сохраненных";
     position: absolute;
-    top: calc(8px + (24 - 8) var(--calc768));
+    top: calc(8px + (24 - 8) * ((100vw - 768px) / (1440 - 768)));
     right: 69px;
     display: flex;
     justify-content: center;
@@ -302,7 +302,7 @@
 
 .news-card__text-place {
     background-color: white;
-    padding: calc(16px + (20 - 16) var(--calc768)) calc(24px + (24 - 16) var(--calc768)) calc(16px + (24 - 16) var(--calc768));
+    padding: calc(16px + (20 - 16) * ((100vw - 768px) / (1440 - 768))) calc(24px + (24 - 16) * ((100vw - 768px) / (1440 - 768))) calc(16px + (24 - 16) * ((100vw - 768px) / (1440 - 768)));
     box-sizing: border-box;
     width: 100%;
     border-radius: 0 0 5% 5%;
@@ -346,7 +346,7 @@
     font-size: 26px;
     line-height: 30px;
     color: #1a1b22;
-    margin: 0 0 calc(10px + (16 - 10) var(--calc768));
+    margin: 0 0 calc(10px + (16 - 10) * ((100vw - 768px) / (1440 - 768)));
     height: 60px;
 
     position: relative;
@@ -387,8 +387,8 @@
     font-size: 16px;
     line-height: 1.375;
     color: #1a1b22;
-    margin: 0 0 calc(12px + (18 - 12) var(--calc768));
-    height: calc(88px + (110 - 88) var(--calc768));
+    margin: 0 0 calc(12px + (18 - 12) * ((100vw - 768px) / (1440 - 768)));
+    height: calc(88px + (110 - 88) * ((100vw - 768px) / (1440 - 768)));
     width: 100%;
     overflow: hidden;
 }

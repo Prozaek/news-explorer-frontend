@@ -2,6 +2,8 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import "./NewsCard.css";
 import { checkBox, trash, checkMarked } from "../../constants/constants";
+import Elipsis from "../../utils/Ellipsis"
+
 
 function NewsCard({ card, keyword }) {
     const location = useLocation();
@@ -16,34 +18,11 @@ function NewsCard({ card, keyword }) {
         e.preventDefault();
     }
 
-    const textRef = React.useRef(); // записывает объект, возвращаемый хуком, в переменную
-
-    // сравнивает оффсет и скролл контента
-    function isEllipsisActive() {
-        return textRef.current.offsetHeight < textRef.current.scrollHeight;
-    }
-
-    let text = "";
-
-    // обрезает текст при изменении размера экрана
-    function resizeListener() {
-        if (!textRef.current) return;
-        textRef.current.innerHTML = text;
-        let words = text.split(" ");
-        while (isEllipsisActive()) {
-            words.pop();
-            textRef.current.innerHTML = `${words.join(" ")}...`;
-        }
-    }
-
-    // слушает изменение размера и запускает обрезчик текста
-    React.useEffect(() => {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        text = textRef.current.innerHTML;
-        window.addEventListener("resize", resizeListener);
-        resizeListener();
-    });
-
+    // добавляет многоточие в конце обрезанного абзаца
+    const {textRef} =  Elipsis()
+   
+    
+    // фоновая картинка новости
     let backgroundImage = {
         backgroundImage: "url(" + card.urlToImage + ")",
     };
@@ -51,7 +30,9 @@ function NewsCard({ card, keyword }) {
     return (
         <section className="news-card">
             <div style={backgroundImage} className="news-card__img-place">
-                {locationPathMain ? <div className="news-card__keyword">{keyword}</div> : <div></div>}
+                {locationPathMain ? 
+                <div className="news-card__keyword">{keyword}</div>
+                 : <div></div>}
                 <button type="button" aria-label="Кнопка выбора карточек" onSubmit={handleSubmit} onClick={locationPathMain ? handleClick : undefined} className={buttonClassName}></button>
             </div>
             <div className="news-card__text-place">

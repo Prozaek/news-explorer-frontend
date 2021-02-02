@@ -4,14 +4,21 @@ import "./PopupAuthorization.css";
 import { useFormWithValidation } from "../../utils/FormValidation";
 
 const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, setIsAuthorBtnChange }) => {
-    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+    // валидатор
+    const { values, handleChange, errors, isValid, resetForm, setIsValid } = useFormWithValidation();
     const { email, password } = values;
+
+    // реcет формы
+    React.useEffect(() => {
+        !isOpenAuthor && resetForm();
+        setIsValid(true)
+    }, [isOpenAuthor, resetForm, setIsValid])
 
     function handleSubmit(e) {
         e.preventDefault();
         onClose();
+        // добавляет в навигацию ссылку "Сохраненные статьи" и заменяет кнопку.
         setIsAuthorBtnChange(true);
-        resetForm();
     }
 
     return (
@@ -33,7 +40,7 @@ const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, setIsAu
                 placeholder="Введите почту" 
                 required type="email" 
                 className="popup__input popup__input_mail-authorization" 
-                value={email} 
+                value={email || ""} 
                 onChange={handleChange} />
                 <span id="emailAuthorization-input-error" className={errors ? "popup__input-error popup__input-error_visible" : "popup__input-error"}>
                     {errors.email}
@@ -51,7 +58,7 @@ const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, setIsAu
                     minLength="2"
                     pattern="^[a-zA-Z\s]+$"
                     className="popup__input popup__input_password-authorization"
-                    value={password}
+                    value={password || ""}
                     onChange={handleChange}
                 />
                 <span id="mailAuthorization-input-error" className={errors ? "popup__input-error popup__input-error_visible" : "popup__input-error"}>
