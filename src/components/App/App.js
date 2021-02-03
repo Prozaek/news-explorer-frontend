@@ -112,7 +112,7 @@ function App() {
                     />
                 </Route>
                 <Route path="/saved-news">
-                    <SavedNews openSavedBurgerMenu={setIsSavedMenuOpen} cards={cards} onClose={closeAllPopups} />
+                    <SavedNews openSavedBurgerMenu={setIsSavedMenuOpen} cards={cards} onClose={closeAllPopups} keyword={keyword}/>
                 </Route>
             </Switch>
             <Footer />

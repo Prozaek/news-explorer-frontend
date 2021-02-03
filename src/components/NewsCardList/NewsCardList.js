@@ -3,6 +3,7 @@ import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
 function NewsCardList({ cards, keyword }) {
+    console.log(keyword)
     return (
         <section className="news-list">
             {cards.map((card, index) => (
