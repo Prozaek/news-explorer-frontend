@@ -31,9 +31,9 @@ function SearchForm({ setKeyword }) {
                 name="search" 
                 value={search || ""} 
                 onChange={handleChange} 
-                pattern="^[a-zA-Z\s]+$" />
+                />
                 <span id="search-input-error" className={errors ? "search__input-error search__input-error_visible" : "search__input-error"}>
-                    {errors.search === "Введите данные в указанном формате." ? "Смените пожалуйста раскладку клавиатуры" : errors.search}
+                    {errors.search}
                 </span>
             </label>
             <button disabled={!isValid} className={!isValid ? "search__button search__button_lock" : "search__button"} type="submit">
