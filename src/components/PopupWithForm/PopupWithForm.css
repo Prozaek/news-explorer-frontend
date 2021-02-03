@@ -1,0 +1,98 @@
+.popup__btn {
+  background: #2f71e5;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+  border-radius: 100px;
+  width: 358px;
+  height: 64px;
+  align-self: center;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33px;
+  text-align: center;
+  color: #ffffff;
+
+  margin-bottom: 16px;
+  border: none;
+  padding: 0;
+  outline: none;
+}
+
+.popup__btn_lock {
+  background: #e6e8eb;
+  pointer-events: none;
+}
+
+.popup__btn:active {
+  background: #2a65cc;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+}
+
+.popup__btn:hover {
+  background: #347eff;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+  cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .popup__btn {
+      max-width: 288px;
+  }
+}
+
+.popup__btn_disabled {
+  opacity: 0.2;
+}
+
+.popup__under-btn-text {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.214;
+  text-align: center;
+  color: #000000;
+  margin: 0;
+}
+
+.popup__under-btn-link {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.214;
+  color: #2f71e5;
+  margin: 0;
+}
+
+.popup__under-btn-link {
+  cursor: pointer;
+}
+
+.popup__title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  color: #1a1b22;
+  margin: 0 0 22px;
+}
+
+.popup__error-registration {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #ff0000;
+  margin: 0 auto 8px;
+  opacity: 1;
+}
+
+.popup__error-registration_visible {
+  opacity: 1;
+}
