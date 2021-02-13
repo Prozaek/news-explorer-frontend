@@ -7,7 +7,7 @@ import Results from "../Results/Results";
 import Preloader from "../Preloader/Preloader"
 import NotFound from "../NotFound/NotFound"
 
-function Main({ onSignOut, onOpenAuthorization, onClose, openBurgerMenu, isOpenAuthor, isOpenRegistr, isOpenSignSucc, articles, setKeyword, keyword, isLoading, noResult, loggedIn, onAddArticles, handleCardDelete, saveArticles}) {
+function Main({ onSignOut, onOpenAuthorization, onClose, openBurgerMenu, isOpenAuthor, isOpenRegistr, isOpenSignSucc, articles, setKeyword, keyword, isLoading, noResult, loggedIn, onAddArticles, handleCardDelete, saveArticles, redirect}) {
 
     return (
         <section className="main">

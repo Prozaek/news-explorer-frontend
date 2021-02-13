@@ -236,8 +236,8 @@ function App() {
                             loggedIn={loggedIn}
                             onAddArticles={handleAddArticles}
                             handleCardDelete={handleCardDelete}
-                            redirOpenAuth={redirOpenAuth}
                             saveArticles={saveArticles}
+                            
                         />
                     </Route>
                     <ProtectedRoute

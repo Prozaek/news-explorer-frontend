@@ -3,7 +3,8 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import "./PopupAuthorization.css";
 import { useFormWithValidation } from "../../utils/FormValidation";
 
-const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, onLogin, loggedIn, waitResponse }) => {
+const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, onLogin, waitResponse }) => {
+
     // валидатор
     const { values, handleChange, errors, isValid, resetForm, setErrors } = useFormWithValidation();
     const { email, password } = values;
