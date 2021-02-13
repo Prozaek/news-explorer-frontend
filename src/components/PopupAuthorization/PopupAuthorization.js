@@ -3,22 +3,27 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import "./PopupAuthorization.css";
 import { useFormWithValidation } from "../../utils/FormValidation";
 
-const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, setIsAuthorBtnChange }) => {
+const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, onLogin, loggedIn, waitResponse}) => {
     // валидатор
-    const { values, handleChange, errors, isValid, resetForm, setIsValid } = useFormWithValidation();
+    const { values, handleChange, errors, isValid, resetForm, setErrors} = useFormWithValidation();
     const { email, password } = values;
 
-    // реcет формы
-    React.useEffect(() => {
-        !isOpenAuthor && resetForm();
-        setIsValid(true)
-    }, [isOpenAuthor, resetForm, setIsValid])
 
+    // записывает сообщение об ошибке при отправке пустой формы
+function handleBtnClick(e) {
+    let event = e.target.closest("form").email; 
+    const name = event.name;
+   return setErrors({...errors, [name]: event.validationMessage})
+}
     function handleSubmit(e) {
         e.preventDefault();
-        onClose();
-        // добавляет в навигацию ссылку "Сохраненные статьи" и заменяет кнопку.
-        setIsAuthorBtnChange(true);
+        handleBtnClick(e)
+        if(isValid) {
+            let { email, password } = values;
+            onLogin(email, password);
+        }
+            onClose();
+            resetForm();
     }
 
     return (
@@ -30,15 +35,21 @@ const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, setIsAu
         isOpen={isOpenAuthor} 
         onClose={onClose} 
         onOpenRegistration={onOpenRegistration} 
-        onSubmit={handleSubmit} 
-        isFormValid={isValid}>
+        onSubmit={handleSubmit}
+        isValid={isValid}
+        errorsPassword={errors.password}
+        errorsEmail={errors.email}
+        waitResponse={waitResponse}
+        resetForm={resetForm}
+        >
             <label className="popup__label">
                 <span className="popup__input-title">Email</span>
                 <input id="emailAuthorization-input" 
                 autoComplete="off" 
                 name="email" 
                 placeholder="Введите почту" 
-                required type="email" 
+                required
+                type="email" 
                 className="popup__input popup__input_mail-authorization" 
                 value={email || ""} 
                 onChange={handleChange} />
@@ -56,7 +67,7 @@ const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, setIsAu
                     required
                     type="password"
                     minLength="2"
-                    pattern="^[a-zA-Z\s]+$"
+                    // pattern="^[a-zA-Z\s]+$"
                     className="popup__input popup__input_password-authorization"
                     value={password || ""}
                     onChange={handleChange}

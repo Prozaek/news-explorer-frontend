@@ -11,15 +11,15 @@ class Api {
         return res.json();
     }
   
-    search(keyword) {
-        return fetch(`${this._baseUrl}/v2/everything?q=Apple&from=2021-01-24&to=2021-01-31&sortBy=popularity&apiKey=91df3880031b4dabba1ae1c6a6829e73`, {
+    getArticles(keyword) {
+        return fetch(`${this._baseUrl}/v2/everything?q=${keyword}&from=2021-02-01&to=2021-02-10&sortBy=popularity&apiKey=91df3880031b4dabba1ae1c6a6829e73`, {
             headers: this._headers,
         }).then(this._getResponseData);
     }
   }
   
   const NewsApi = new Api({
-    baseUrl: "http://newsapi.org",
+    baseUrl: "https://nomoreparties.co/news",
     headers: {
         authorization: "apiKey=91df3880031b4dabba1ae1c6a6829e73",
         "Content-Type": "application/json",

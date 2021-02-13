@@ -1,49 +1,69 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import "./NewsCard.css";
-import { checkBox, trash, checkMarked } from "../../constants/constants";
+import { checkBox, checkMarked } from "../../constants/constants";
 import Elipsis from "../../utils/Ellipsis"
 
-
-function NewsCard({ card, keyword }) {
+function NewsCard({loggedIn, onAddArticles, article, handleCardDelete,  keywordResArticles, saveArticles }) {
     const location = useLocation();
     const locationPathMain = location.pathname === "/";
 
-    let buttonClassName = "";
-    locationPathMain ? (buttonClassName = checkBox) : (buttonClassName = trash);
-
-    const handleClick = (e) => (e.target.className === checkBox ? (e.target.className = checkMarked) : (e.target.className = checkBox));
-
-    function handleSubmit(e) {
-        e.preventDefault();
-    }
-
     // добавляет многоточие в конце обрезанного абзаца
     const {textRef} =  Elipsis()
-   
+    const [btnClassName, setBtnClassName]=React.useState(checkBox)
+
+    // сравнивает входящую новость с новостями из базы и маркирует, если новость уже сохранена
+ React.useEffect(()=> {
+    saveArticles.find((saveArticle) => saveArticle.link === article.url &&  setBtnClassName(checkMarked));
+ }, [saveArticles, article.url])
     
-    // фоновая картинка новости
-    let backgroundImage = {
-        backgroundImage: "url(" + card.urlToImage + ")",
-    };
+    const handleClick = (e) => {
+        if( e.target.className === checkBox){
+         onAddArticles({keyword: keywordResArticles, article: article})
+
+        }else{
+            // ищет совпадение по идентификаторам url/link и возвращает информацию для удаления в случае если пользователь передумал сохранять новость
+            const foundArticle = saveArticles.find(saveArticle => saveArticle.link === article.url)
+            // удаление новости из базы по клику на синий флажок
+            handleCardDeleteClick(foundArticle)
+        }
+        // тоггл меняющий цвет кнопки
+        e.target.className === checkBox  ?
+             setBtnClassName(checkMarked) :
+             setBtnClassName(checkBox) 
+    }
+
+    // удаляет по клику на флажок, либо по клику на корзину
+    function handleCardDeleteClick(card) {
+        locationPathMain ?
+       handleCardDelete(card) : 
+        handleCardDelete(article)
+      }
+
+      console.log(article.publishedAt)
 
     return (
         <section className="news-card">
-            <div style={backgroundImage} className="news-card__img-place">
+            <div className="news-card__img-place">
                 {locationPathMain ? 
-                <div className="news-card__keyword">{keyword}</div>
-                 : <div></div>}
-                <button type="button" aria-label="Кнопка выбора карточек" onSubmit={handleSubmit} onClick={locationPathMain ? handleClick : undefined} className={buttonClassName}></button>
+                <></>
+                : <div className="news-card__keyword"><p className="news-card__keyword-text">{article.keyword}</p></div>}
+               {locationPathMain 
+               ? <div className="news-card__btn-container"><button disabled={!loggedIn} aria-label="Кнопка выбора карточек" onClick={handleClick} className={btnClassName}></button></div> 
+               :  <div className="news-card__btn-container">
+               <button onClick={handleCardDeleteClick} type="button" aria-label="Кнопка удаления карточек" className="news-card__trash"></button>
+               </div>}
+               <img className="news-card__img" src={article.urlToImage || article.image} alt="Иллюстрация новости" />
             </div>
             <div className="news-card__text-place">
-                <p className="news-card__date">{card.publishedAt}</p>
-                <a target="_blank" rel="noreferrer" className="news-card__link" href={card.url}>
-                    <h2 className="news-card__title">{card.title}</h2>
+                <p className="news-card__date">{article.publishedAt || article.date}</p>
+                <a target="_blank" rel="noreferrer" className="news-card__link" href={article.url || article.link }>
+                    <h2 className="news-card__title">{article.title}</h2>
                 </a>
                 <p className="news-card__text" ref={textRef}>
-                    {card.description}
+                    {article.description || article.text}
                 </p>
-                <p className="news-card__source">{card.source.name}</p>
+                <p className="news-card__source">{article.source.name || article.source}</p>
             </div>
         </section>
     );
