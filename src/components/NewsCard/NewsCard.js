@@ -40,8 +40,12 @@ function NewsCard({loggedIn, onAddArticles, article, handleCardDelete,  keywordR
         handleCardDelete(article)
       }
 
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
       // конвертирует дату 
-      let date = new Date(article.publishedAt || article.date).toLocaleDateString();
+      let dateStr = new Date(article.publishedAt || article.date).toLocaleDateString("ru", options);
+    //   console.log(date.replace('г.', ''))
+      let date = `${dateStr.slice(0, -8)}, ${dateStr.slice(-7, -2)}`
+    
 
     return (
         <section className="news-card">
