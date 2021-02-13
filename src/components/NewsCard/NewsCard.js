@@ -40,7 +40,8 @@ function NewsCard({loggedIn, onAddArticles, article, handleCardDelete,  keywordR
         handleCardDelete(article)
       }
 
-      console.log(article.publishedAt)
+      // конвертирует дату 
+      const date = new Date(article.publishedAt || article.date).toLocaleDateString();
 
     return (
         <section className="news-card">
@@ -56,7 +57,7 @@ function NewsCard({loggedIn, onAddArticles, article, handleCardDelete,  keywordR
                <img className="news-card__img" src={article.urlToImage || article.image} alt="Иллюстрация новости" />
             </div>
             <div className="news-card__text-place">
-                <p className="news-card__date">{article.publishedAt || article.date}</p>
+                <p className="news-card__date">{date}</p>
                 <a target="_blank" rel="noreferrer" className="news-card__link" href={article.url || article.link }>
                     <h2 className="news-card__title">{article.title}</h2>
                 </a>
