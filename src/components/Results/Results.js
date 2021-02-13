@@ -8,11 +8,9 @@ function Results({ articles, keyword, loggedIn, onAddArticles, handleCardDelete,
 
     const keywordResArticles = articles.keyword;
 
-//    console.log(articles)
     function sliceArticles() {
         return articles.resArticles.slice(0, nextThree);
     }
-
 
     function handleClick() {
         setNextThree(nextThree + 3);

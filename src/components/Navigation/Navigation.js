@@ -4,9 +4,9 @@ import "./Navigation.css";
 import logoutIconWhite from "../../images/svg/logout_white.svg";
 import { navigationDisable, navigation } from "../../constants/constants";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import NavigationSavedNews from "./NavigationSavedNews"
+import NavigationSavedNews from "./NavigationSavedNews";
 
-function Navigation({ loggedIn, onSignOut, onOpenAuthorization, openBurgerMenu, isOpenAuthor, isOpenRegistr, isOpenSignSucc, openSavedBurgerMenu}) {
+function Navigation({ loggedIn, onSignOut, onOpenAuthorization, openBurgerMenu, isOpenAuthor, isOpenRegistr, isOpenSignSucc, openSavedBurgerMenu }) {
     const location = useLocation();
     const locationPathMain = location.pathname === "/";
     const currentUser = React.useContext(CurrentUserContext);
@@ -18,8 +18,7 @@ function Navigation({ loggedIn, onSignOut, onOpenAuthorization, openBurgerMenu, 
 
     // открывает черное мобильное меню
     function handleClickBurgerMenu() {
-        openBM()
-        
+        openBM();
     }
 
     // делает невидимой панель navigation если открыты попапы авторизации или регистрации и при этом ширина окна меньше 400 px
@@ -28,50 +27,50 @@ function Navigation({ loggedIn, onSignOut, onOpenAuthorization, openBurgerMenu, 
     const classNavigationChange = () => ((isOpenRegistr || isOpenAuthor || isOpenSignSucc) & (window.innerWidth < 401) ? (navigationClassName = navigationDisable) : (navigationClassName = navigation));
     classNavigationChange();
 
-
     return (
         <nav className={navigationClassName}>
+            {locationPathMain ? (
+                <ul className="navigation__ul">
+                    <li className="navigation__li">
+                        <Link className="navigation__logo" to="/">
+                            NewsExplorer
+                        </Link>
+                    </li>
+                    <div className="navigation__container">
+                        <li className="navigation__li">
+                            <Link className="navigation__main-link" to="/">
+                                Главная
+                            </Link>
+                        </li>
+                        <li className="navigation__li">
+                            <Link className="navigation__saved-news" to="/saved-news">
+                                {loggedIn ? "Сохраненные статьи" : ""}
+                            </Link>
+                        </li>
+                        {/* замена кнопки "авторизация" на "выход" */}
+                        {loggedIn ? (
+                            <li className="navigation__li">
+                                <button onClick={handleClick} className="navigation__btn-logout navigation__btn-logout_main" aria-label="кнопка выхода" type="button">
+                                    {currentUser.user}
+                                    <img src={logoutIconWhite} alt="стрелка выхода" className="navigation__img-logout" />
+                                </button>
+                            </li>
+                        ) : (
+                            <li className="navigation__li">
+                                <button onClick={handleClick} className="navigation__btn-authorization" aria-label="кнопка авторизации" type="button">
+                                    Авторизоваться
+                                </button>
+                            </li>
+                        )}
 
-            {locationPathMain ?
-            <ul className="navigation__ul">
-                <li className="navigation__li">
-                    <Link className="navigation__logo" to="/">
-                        NewsExplorer
-                    </Link>
-                </li>
-                <div className="navigation__container">
-                    <li className="navigation__li">
-                        <Link className="navigation__main-link" to="/">
-                            Главная
-                        </Link>
-                    </li>
-                    <li className="navigation__li">
-                        <Link className="navigation__saved-news" to="/saved-news">
-                            {loggedIn ? "Сохраненные статьи" : ""}
-                        </Link>
-                    </li>
-                    {/* замена кнопки "авторизация" на "выход" */}
-                    {loggedIn ? (
                         <li className="navigation__li">
-                            <button onClick={handleClick} className="navigation__btn-logout navigation__btn-logout_main" aria-label="кнопка выхода" type="button">
-                            {currentUser.user}
-                                <img src={logoutIconWhite} alt="стрелка выхода" className="navigation__img-logout" />
-                            </button>
+                            <button onClick={handleClickBurgerMenu} className="navigation__butter"></button>
                         </li>
-                    ) : (
-                        <li className="navigation__li">
-                            <button onClick={handleClick} className="navigation__btn-authorization" aria-label="кнопка авторизации" type="button">
-                                Авторизоваться
-                            </button>
-                        </li>
-                    )}
-                   
-                    <li className="navigation__li">
-                        <button onClick={handleClickBurgerMenu} className="navigation__butter"></button>
-                    </li>
-                </div>
-            </ul> : <NavigationSavedNews openSavedBurgerMenu={openSavedBurgerMenu} onSignOut={onSignOut}/>
-             }
+                    </div>
+                </ul>
+            ) : (
+                <NavigationSavedNews openSavedBurgerMenu={openSavedBurgerMenu} onSignOut={onSignOut} />
+            )}
         </nav>
     );
 }

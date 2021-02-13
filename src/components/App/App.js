@@ -38,7 +38,7 @@ function App() {
     // cтейт для карточек results
     const [saveArticles, setSaveArticles] = React.useState([]);
 
-    const jsonArt = JSON.parse(localStorage.getItem("articles")) 
+    const jsonArt = JSON.parse(localStorage.getItem("articles"));
     // cтейт для cохраненных статей
     const [articles, setArticles] = React.useState(jsonArt || {});
 
@@ -47,7 +47,7 @@ function App() {
     // стейт компонента "NotFound"
     const [noResult, setNoResult] = React.useState(false);
 
-    const [redirOpenAuth, setRedirOpenAuth] = React.useState(false)
+    const [redirOpenAuth, setRedirOpenAuth] = React.useState(false);
 
     // получает фразу из поля поиска
     const [keyword, setKeyword] = React.useState("");
@@ -56,14 +56,14 @@ function App() {
 
     //проверяет токен при загрузке страницы
     React.useEffect(() => {
-        tokenCheck()
+        tokenCheck();
     }, []);
 
     // проверяет токен, меняет состояние loggedIn
-    const tokenCheck  = () => {
-        const jwt =  localStorage.getItem("jwt");
+    const tokenCheck = () => {
+        const jwt = localStorage.getItem("jwt");
         if (jwt) {
-          auth.getContent(jwt)
+            auth.getContent(jwt)
                 .then((res) => {
                     if (res) {
                         setCurrentUser(res.user);
@@ -89,7 +89,7 @@ function App() {
     React.useEffect(() => {
         loggedIn &&
             MainApi.getArticles()
-            .then(setIsLoading(true))
+                .then(setIsLoading(true))
                 .then((results) => {
                     setIsLoading(false);
                     const articles = results.data;
@@ -107,10 +107,10 @@ function App() {
                 .then(setIsLoading(true))
                 .then((results) => {
                     const resArticles = results.articles;
-                    const jsonArticles = JSON.stringify({keyword, resArticles});
+                    const jsonArticles = JSON.stringify({ keyword, resArticles });
                     localStorage.setItem("articles", jsonArticles);
                     setNoResult(false);
-                    setArticles({keyword, resArticles});
+                    setArticles({ keyword, resArticles });
                     setIsLoading(false);
                     results.totalResults === 0 && setNoResult(true);
                 })
@@ -121,21 +121,21 @@ function App() {
 
     // регистрирует нового пользователя
     const handleRegister = (name, email, password) => {
-        setWaitResponse(true)
+        setWaitResponse(true);
         auth.register(name, email, password)
             .then((res) => {
-                if(res.data){
-                setSuccess(true);
-                setError409("");
-                setWaitResponse(false);
-            }
+                if (res.data) {
+                    setSuccess(true);
+                    setError409("");
+                    setWaitResponse(false);
+                }
             })
             .catch((err) => {
                 err === "Ошибка: 409" && setError409("Такой пользователь уже есть.");
                 setWaitResponse(false);
             });
     };
-    
+
     // часть логики авторизации, добавление токена в хранилище
     const handleResponse = (data) => {
         if (data) {
@@ -169,10 +169,7 @@ function App() {
     function handleAddArticles({ keyword, article }) {
         MainApi.postArticles(keyword, article)
             .then(() => {
-                MainApi.getArticles()
-                .then((res) => 
-                setSaveArticles(res.data)
-                )
+                MainApi.getArticles().then((res) => setSaveArticles(res.data));
             })
             .catch((err) => {
                 console.log(err);
@@ -222,7 +219,7 @@ function App() {
         setIsSavedMenuOpen(false);
         setWaitResponse(false);
     }
-   
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="App">

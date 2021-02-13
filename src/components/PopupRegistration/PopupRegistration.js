@@ -3,7 +3,7 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import "./PopupRegistration.css";
 import { useFormWithValidation } from "../../utils/FormValidation";
 
-const PopupRegistration = ({ isOpenRegistr, onClose, onOpenAuthorization, onRegister, success, setSuccessOpen, error409, setSuccess, isLoading, waitResponse}) => {
+const PopupRegistration = ({ isOpenRegistr, onClose, onOpenAuthorization, onRegister, success, setSuccessOpen, error409, setSuccess, isLoading, waitResponse }) => {
     // валидатор
     const { values, handleChange, errors, isValid, resetForm, setErrors } = useFormWithValidation();
     const { email, password, name } = values;
@@ -15,20 +15,19 @@ const PopupRegistration = ({ isOpenRegistr, onClose, onOpenAuthorization, onRegi
         return setErrors({ ...errors, [name]: event.validationMessage });
     }
 
-// в случае успешной регистрации закрывает и очищает форму, открывает попап подтверждения регистрации.
+    // в случае успешной регистрации закрывает и очищает форму, открывает попап подтверждения регистрации.
     React.useEffect(() => {
         if (success) {
-            onClose()
-            resetForm() 
-            setSuccessOpen(true) 
-            setSuccess(false) 
+            onClose();
+            resetForm();
+            setSuccessOpen(true);
+            setSuccess(false);
         }
-    }, [onClose, resetForm, setSuccessOpen, success, setSuccess ])
+    }, [onClose, resetForm, setSuccessOpen, success, setSuccess]);
 
     function handleSubmit(e) {
         e.preventDefault();
-        isValid &&
-        onRegister(name, email, password);
+        isValid && onRegister(name, email, password);
         handleBtnClick(e);
     }
 
@@ -50,15 +49,7 @@ const PopupRegistration = ({ isOpenRegistr, onClose, onOpenAuthorization, onRegi
         >
             <label className="popup__label">
                 <span className="popup__input-title">Email</span>
-                <input id="mailRegistration-input" autoComplete="off" 
-                name="email" 
-                placeholder="Введите почту" 
-                required 
-                type="email" 
-                className="popup__input popup__input_mail-registration" 
-                value={email || ""} 
-                onChange={handleChange} 
-                />
+                <input id="mailRegistration-input" autoComplete="off" name="email" placeholder="Введите почту" required type="email" className="popup__input popup__input_mail-registration" value={email || ""} onChange={handleChange} />
                 <span id="emailRegistration-input-error" className={errors ? "popup__input-error popup__input-error_visible" : "popup__input-error"}>
                     {errors.email}
                 </span>
