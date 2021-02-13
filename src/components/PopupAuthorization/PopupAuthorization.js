@@ -20,9 +20,10 @@ const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, onLogin
         if (isValid) {
             let { email, password } = values;
             onLogin(email, password);
+
+             onClose();
+             resetForm();
         }
-        onClose();
-        resetForm();
     }
 
     return (

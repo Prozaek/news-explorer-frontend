@@ -74,8 +74,6 @@ function App() {
         }
     };
 
-    // Запрос к API за информацией о пользователе и массиве карточек выполняется единожды при монтировании. / 1.88
-
     React.useEffect(() => {
         MainApi.getUser()
             .then((results) => {
@@ -205,10 +203,6 @@ function App() {
     function handleESignupSuccessPopupClick() {
         setIsSignupSuccessPopupOpen(true);
     }
-
-    // function handleSuccessOpen() {
-    //     setSuccessOpen(true);
-    // }
 
     // закрывает все попапы
     function closeAllPopups() {
