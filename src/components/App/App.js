@@ -47,8 +47,6 @@ function App() {
     // стейт компонента "NotFound"
     const [noResult, setNoResult] = React.useState(false);
 
-    const [redirOpenAuth, setRedirOpenAuth] = React.useState(false);
-
     // получает фразу из поля поиска
     const [keyword, setKeyword] = React.useState("");
 
@@ -252,7 +250,6 @@ function App() {
                         handleCardDelete={handleCardDelete}
                         isLoading={isLoading}
                         onOpenAuthorization={handleAuthorizationPopupClick}
-                        setRedirOpenAuth={setRedirOpenAuth}
                         articles={articles}
                     />
                 </Switch>

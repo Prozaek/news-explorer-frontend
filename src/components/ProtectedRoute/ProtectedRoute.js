@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Redirect} from "react-router-dom";
 
 const ProtectedRoute = ({ component: Component, ...props }) => {
-  
     const jwt =  localStorage.getItem("jwt");
    
     return (
@@ -10,7 +9,11 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
         {
           jwt
           ? <Component {...props} /> 
-          : <Redirect to="/" />  
+          : <Redirect
+          to={{
+            pathname: "/",
+            referer: props.onOpenAuthorization(true) 
+          }}/>  
         }
       </Route>
     );
