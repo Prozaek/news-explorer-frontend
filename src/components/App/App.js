@@ -161,8 +161,8 @@ function App() {
         localStorage.removeItem("jwt");
         setCurrentUser({});
         setLoggedIn(false);
-        // localStorage.removeItem("articles");
-        // setArticles([]);
+        localStorage.removeItem("articles");
+        setArticles([]);
     };
 
     // публикация карточки

@@ -3,7 +3,7 @@ class Api {
         this._headers = headers;
         this._baseUrl = baseUrl;
         this._to = new Date()
-        let dateWeekBefore = new Date().setDate(this._to.getDate()-7);
+        let dateWeekBefore = this._to.setDate(this._to.getDate()-7);
         this._from = new Date(dateWeekBefore)
         // console.log(this._to.toISOString().slice(0,10))
     }

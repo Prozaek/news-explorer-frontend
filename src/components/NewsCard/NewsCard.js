@@ -41,7 +41,7 @@ function NewsCard({loggedIn, onAddArticles, article, handleCardDelete,  keywordR
       }
 
       // конвертирует дату 
-      const date = new Date(article.publishedAt || article.date).toLocaleDateString();
+      let date = new Date(article.publishedAt || article.date).toLocaleDateString();
 
     return (
         <section className="news-card">
