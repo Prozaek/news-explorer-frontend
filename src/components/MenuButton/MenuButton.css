@@ -12,6 +12,7 @@
   height: 0;
   opacity: 0;
   transition: height 0ms 400ms, opacity 400ms 0ms;
+  z-index: 1;
 }
 
 .menu-button_pointer {

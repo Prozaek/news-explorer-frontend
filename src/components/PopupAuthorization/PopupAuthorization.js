@@ -3,45 +3,53 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import "./PopupAuthorization.css";
 import { useFormWithValidation } from "../../utils/FormValidation";
 
-const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, setIsAuthorBtnChange }) => {
+const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, onLogin, waitResponse }) => {
+
+//     Комментарий: если запрос на новостей, авторизация или регистрация завершился ошибкой (например если пропал интернет), то пользователь должен увидеть сообщение
+//  поля формы заблокированы во время отправки запросов. 
+// Комментарий: на время выполнения запроса считается хорошей практикой блокировать поля ввода и кнопку отправки формы, что бы пользователь не мог выполнить новые запросы до завершения предыдущего. Попап не должен закрыватсья до ответа сервера
+
     // валидатор
-    const { values, handleChange, errors, isValid, resetForm, setIsValid } = useFormWithValidation();
+    const { values, handleChange, errors, isValid, resetForm, setErrors } = useFormWithValidation();
     const { email, password } = values;
 
-    // реcет формы
-    React.useEffect(() => {
-        !isOpenAuthor && resetForm();
-        setIsValid(true)
-    }, [isOpenAuthor, resetForm, setIsValid])
-
+    // записывает сообщение об ошибке при отправке пустой формы
+    function handleBtnClick(e) {
+        let event = e.target.closest("form").email;
+        const name = event.name;
+        return setErrors({ ...errors, [name]: event.validationMessage });
+    }
     function handleSubmit(e) {
         e.preventDefault();
-        onClose();
-        // добавляет в навигацию ссылку "Сохраненные статьи" и заменяет кнопку.
-        setIsAuthorBtnChange(true);
+        handleBtnClick(e);
+        if (isValid) {
+            let { email, password } = values;
+            onLogin(email, password);
+
+             onClose();
+             resetForm();
+        }
     }
 
     return (
-        <PopupWithForm 
-        name="authorization" 
-        nameBtn="Войти" 
-        textUnderBtn="Зарегистрироваться" 
-        title="Вход" 
-        isOpen={isOpenAuthor} 
-        onClose={onClose} 
-        onOpenRegistration={onOpenRegistration} 
-        onSubmit={handleSubmit} 
-        isFormValid={isValid}>
+        <PopupWithForm
+            name="authorization"
+            nameBtn="Войти"
+            textUnderBtn="Зарегистрироваться"
+            title="Вход"
+            isOpen={isOpenAuthor}
+            onClose={onClose}
+            onOpenRegistration={onOpenRegistration}
+            onSubmit={handleSubmit}
+            isValid={isValid}
+            errorsPassword={errors.password}
+            errorsEmail={errors.email}
+            waitResponse={waitResponse}
+            resetForm={resetForm}
+        >
             <label className="popup__label">
                 <span className="popup__input-title">Email</span>
-                <input id="emailAuthorization-input" 
-                autoComplete="off" 
-                name="email" 
-                placeholder="Введите почту" 
-                required type="email" 
-                className="popup__input popup__input_mail-authorization" 
-                value={email || ""} 
-                onChange={handleChange} />
+                <input id="emailAuthorization-input" autoComplete="off" name="email" placeholder="Введите почту" required type="email" className="popup__input popup__input_mail-authorization" value={email || ""} onChange={handleChange} />
                 <span id="emailAuthorization-input-error" className={errors ? "popup__input-error popup__input-error_visible" : "popup__input-error"}>
                     {errors.email}
                 </span>
@@ -56,7 +64,7 @@ const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, setIsAu
                     required
                     type="password"
                     minLength="2"
-                    pattern="^[a-zA-Z\s]+$"
+                    // pattern="^[a-zA-Z\s]+$"
                     className="popup__input popup__input_password-authorization"
                     value={password || ""}
                     onChange={handleChange}

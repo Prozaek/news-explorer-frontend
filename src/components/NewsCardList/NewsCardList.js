@@ -1,13 +1,17 @@
 import React from "react";
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
+import { useLocation} from "react-router-dom";
 
-function NewsCardList({ cards, keyword }) {
-    console.log(keyword)
+function NewsCardList({ articles, keyword, loggedIn, onAddArticles, saveArticles, handleCardDelete, keywordResArticles, onOpenAuthorization }) {
+    
+    const location = useLocation();
+    const locationPathMain = location.pathname === "/";
+
     return (
         <section className="news-list">
-            {cards.map((card, index) => (
-                <NewsCard key={index} card={card} keyword={keyword} />
+            {(locationPathMain ? articles : saveArticles).map((article, index) => (
+                <NewsCard key={index} article={article} keyword={keyword} loggedIn={loggedIn}  onAddArticles={onAddArticles} handleCardDelete={handleCardDelete} articles={articles} saveArticles={saveArticles} keywordResArticles={keywordResArticles} onOpenAuthorization={onOpenAuthorization}/>
             ))}
         </section>
     );

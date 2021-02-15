@@ -42,10 +42,6 @@
   }
 }
 
-.popup__btn_disabled {
-  opacity: 0.2;
-}
-
 .popup__under-btn-text {
   font-family: Inter;
   font-style: normal;
@@ -80,6 +76,32 @@
   color: #1a1b22;
   margin: 0 0 22px;
 }
+
+.popup__title-spinner {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  color: #1a1b22;
+  margin: 0 0 22px;
+}
+
+.popup__title-spinner:after {
+  display: inline-block;
+  animation: dotty steps(1,end) 1s infinite;
+  content: '';
+}
+
+@keyframes dotty {
+    0%   { content: ''; }
+    25%  { content: '.'; }
+    50%  { content: '..'; }
+    75%  { content: '...'; }
+    100% { content: ''; }
+}
+
+
 
 .popup__error-registration {
   font-family: Inter;
