@@ -5,6 +5,10 @@ import { useFormWithValidation } from "../../utils/FormValidation";
 
 const PopupAuthorization = ({ isOpenAuthor, onClose, onOpenRegistration, onLogin, waitResponse }) => {
 
+//     Комментарий: если запрос на новостей, авторизация или регистрация завершился ошибкой (например если пропал интернет), то пользователь должен увидеть сообщение
+//  поля формы заблокированы во время отправки запросов. 
+// Комментарий: на время выполнения запроса считается хорошей практикой блокировать поля ввода и кнопку отправки формы, что бы пользователь не мог выполнить новые запросы до завершения предыдущего. Попап не должен закрыватсья до ответа сервера
+
     // валидатор
     const { values, handleChange, errors, isValid, resetForm, setErrors } = useFormWithValidation();
     const { email, password } = values;

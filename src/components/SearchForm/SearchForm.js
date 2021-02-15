@@ -3,6 +3,9 @@ import "./SearchForm.css";
 import { useFormWithValidation } from "../../utils/FormValidation";
 
 function SearchForm({ setKeyword}) {
+// Комментарий: на время выполнения запроса считается хорошей практикой блокировать поля ввода и кнопку отправки формы, что бы пользователь не мог выполнить новые запросы до завершения предыдущего. Попап не должен закрыватсья до ответа сервера
+
+
     const { values, handleChange, errors, isValid, resetForm, setErrors } = useFormWithValidation();
     const {searchInput} = values;
     
