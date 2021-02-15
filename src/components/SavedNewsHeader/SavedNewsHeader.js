@@ -5,15 +5,9 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function SavedNewsHeader({ saveArticles }) {
     const currentUser = React.useContext(CurrentUserContext);
 
-    // выбирает из объектов поля keyword
-    const keywords = saveArticles.reduce(function (acc, el) {
-        acc.push(el.keyword);
-        return acc;
-    }, []);
-
     // отбирает уникальные keywords
-    const keywordsUniq = keywords.reduce((acc, el) => {
-        !acc.includes(el) && acc.push(el);
+    const keywordsUniq = saveArticles.reduce((acc, el) => {
+        !acc.includes(el.keyword) && acc.push(el.keyword);
         return acc;
     }, []);
 

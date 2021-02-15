@@ -3,6 +3,9 @@ import "./Results.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 
 function Results({ articles, keyword, loggedIn, onAddArticles, handleCardDelete, saveArticles, onOpenAuthorization, resAddArticle }) {
+
+    // Комментарий: время за которое выполняется поиск (7) и количество отображаемых карточек (3) нужно вынести в константы в отдельный файл
+
     const [nextThree, setNextThree] = React.useState(3);
     const [btnHide, setBtnHide] = React.useState(true)
 
