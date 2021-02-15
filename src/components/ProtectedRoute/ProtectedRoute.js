@@ -12,7 +12,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
           : <Redirect
           to={{
             pathname: "/",
-            openAuth: props.onOpenAuthorization(true) 
+            openAuth: props.onOpenAuthorization() 
           }}/>  
         }
       </Route>

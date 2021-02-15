@@ -4,7 +4,7 @@ import "./NewsCard.css";
 import { checkBox, checkMarked } from "../../constants/constants";
 import Elipsis from "../../utils/Ellipsis"
 
-function NewsCard({loggedIn, onAddArticles, article, handleCardDelete,  keywordResArticles, saveArticles }) {
+function NewsCard({loggedIn, onAddArticles, article, handleCardDelete,  keywordResArticles, saveArticles, onOpenAuthorization, resAddArticle  }) {
     const location = useLocation();
     const locationPathMain = location.pathname === "/";
 
@@ -18,9 +18,11 @@ function NewsCard({loggedIn, onAddArticles, article, handleCardDelete,  keywordR
  }, [saveArticles, article.url])
     
     const handleClick = (e) => {
+        !loggedIn && onOpenAuthorization()
         if( e.target.className === checkBox){
+            loggedIn &&
          onAddArticles({keyword: keywordResArticles, article: article})
-
+         
         }else{
             // ищет совпадение по идентификаторам url/link и возвращает информацию для удаления в случае если пользователь передумал сохранять новость
             const foundArticle = saveArticles.find(saveArticle => saveArticle.link === article.url)
@@ -29,7 +31,7 @@ function NewsCard({loggedIn, onAddArticles, article, handleCardDelete,  keywordR
         }
         // тоггл меняющий цвет кнопки
         e.target.className === checkBox  ?
-             setBtnClassName(checkMarked) :
+        resAddArticle && setBtnClassName(checkMarked):
              setBtnClassName(checkBox) 
     }
 
@@ -43,7 +45,6 @@ function NewsCard({loggedIn, onAddArticles, article, handleCardDelete,  keywordR
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       // конвертирует дату 
       let dateStr = new Date(article.publishedAt || article.date).toLocaleDateString("ru", options);
-    //   console.log(date.replace('г.', ''))
       let date = `${dateStr.slice(0, -8)}, ${dateStr.slice(-7, -2)}`
     
 
@@ -54,7 +55,7 @@ function NewsCard({loggedIn, onAddArticles, article, handleCardDelete,  keywordR
                 <></>
                 : <div className="news-card__keyword"><p className="news-card__keyword-text">{article.keyword}</p></div>}
                {locationPathMain 
-               ? <div className="news-card__btn-container"><button disabled={!loggedIn} aria-label="Кнопка выбора карточек" onClick={handleClick} className={btnClassName}></button></div> 
+               ? <div className="news-card__btn-container"><button  aria-label="Кнопка выбора карточек" onClick={handleClick} className={btnClassName}></button></div> 
                :  <div className="news-card__btn-container">
                <button onClick={handleCardDeleteClick} type="button" aria-label="Кнопка удаления карточек" className="news-card__trash"></button>
                </div>}

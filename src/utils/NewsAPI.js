@@ -3,7 +3,8 @@ class Api {
         this._headers = headers;
         this._baseUrl = baseUrl;
         this._to = new Date();
-        let dateWeekBefore = this._to.setDate(this._to.getDate() - 7);
+        // время за которое выполняется поиск (7)  нужно вынести в константы в отдельный файл
+        let dateWeekBefore = new Date().setDate(new Date().getDate() - 7);
         this._from = new Date(dateWeekBefore);
     }
 

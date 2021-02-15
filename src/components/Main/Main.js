@@ -7,7 +7,7 @@ import Results from "../Results/Results";
 import Preloader from "../Preloader/Preloader"
 import NotFound from "../NotFound/NotFound"
 
-function Main({ onSignOut, onOpenAuthorization, onClose, openBurgerMenu, isOpenAuthor, isOpenRegistr, isOpenSignSucc, articles, setKeyword, keyword, isLoading, noResult, loggedIn, onAddArticles, handleCardDelete, saveArticles, redirect}) {
+function Main({ onSignOut, onOpenAuthorization, onClose, openBurgerMenu, isOpenAuthor, isOpenRegistr, isOpenSignSucc, articles, setKeyword, keyword, isLoading, noResult, loggedIn, onAddArticles, handleCardDelete, saveArticles, resAddArticle}) {
 
     return (
         <section className="main">
@@ -32,7 +32,7 @@ function Main({ onSignOut, onOpenAuthorization, onClose, openBurgerMenu, isOpenA
             {!articles.keyword ? <></> 
              : isLoading ? <Preloader /> 
              : noResult ? <NotFound />
-             : <Results articles={articles} keyword={keyword} loggedIn={loggedIn} onAddArticles={onAddArticles} handleCardDelete={handleCardDelete} saveArticles={saveArticles}/> }
+             : <Results articles={articles} keyword={keyword} loggedIn={loggedIn} onAddArticles={onAddArticles} handleCardDelete={handleCardDelete} saveArticles={saveArticles} onOpenAuthorization={onOpenAuthorization} resAddArticle={resAddArticle}/> }
             <About />
         </section>
     );

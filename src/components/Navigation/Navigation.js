@@ -14,11 +14,9 @@ function Navigation({ loggedIn, onSignOut, onOpenAuthorization, openBurgerMenu, 
     // при клике на "Авторизация" открывает попап onOpenAuthorization, при клике на "Выход" вылогинивается.
     const handleClick = (e) => (e.target.className === "navigation__btn-authorization" ? onOpenAuthorization() : onSignOut());
 
-    const openBM = () => openBurgerMenu(true);
-
     // открывает черное мобильное меню
     function handleClickBurgerMenu() {
-        openBM();
+        openBurgerMenu(true);
     }
 
     // делает невидимой панель navigation если открыты попапы авторизации или регистрации и при этом ширина окна меньше 400 px

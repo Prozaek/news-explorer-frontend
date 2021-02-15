@@ -32,9 +32,6 @@ function SavedNewsHeader({ saveArticles }) {
         if (n1 > 1 && n1 < 5) {
             return text_forms[1];
         }
-        if (n1 > 1 && n1 < 5) {
-            return text_forms[1];
-        }
         if (n1 > 6 && n1 < 9) {
             return text_forms[0];
         }
@@ -44,9 +41,9 @@ function SavedNewsHeader({ saveArticles }) {
         }
         return text_forms[2];
     }
-    let endWordsSubtitle = declOfNum(othersKeywords, ["ми", "м", "ти", "им"]);
-    let endWordsTitle = declOfNum(allArticles, ["ых", "ые", "ых", "ая"]);
-    let endWordsTitle2 = declOfNum(allArticles, ["ей", "ьи", "ей", "ья"]);
+    const endWordsSubtitle = declOfNum(othersKeywords, ["ми", "м", "ти", "им"]);
+    const endWordsTitle = declOfNum(allArticles, ["ых", "ые", "ых", "ая"]);
+    const endWordsTitle2 = declOfNum(allArticles, ["ей", "ьи", "ей", "ья"]);
 
 
 

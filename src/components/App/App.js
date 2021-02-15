@@ -52,6 +52,8 @@ function App() {
 
     const [waitResponse, setWaitResponse] = React.useState(false);
 
+    const [resAddArticle, setResAddArticle] = React.useState(false);
+
     //проверяет токен при загрузке страницы
     React.useEffect(() => {
         tokenCheck();
@@ -87,6 +89,7 @@ function App() {
             MainApi.getArticles()
                 .then(setIsLoading(true))
                 .then((results) => {
+                    setResAddArticle(results)
                     setIsLoading(false);
                     const articles = results.data;
                     setSaveArticles(articles);
@@ -235,7 +238,7 @@ function App() {
                             onAddArticles={handleAddArticles}
                             handleCardDelete={handleCardDelete}
                             saveArticles={saveArticles}
-                            
+                            resAddArticle={resAddArticle}
                         />
                     </Route>
                     <ProtectedRoute

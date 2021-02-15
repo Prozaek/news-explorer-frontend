@@ -2,7 +2,7 @@ import React from "react";
 import "./Results.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 
-function Results({ articles, keyword, loggedIn, onAddArticles, handleCardDelete, saveArticles }) {
+function Results({ articles, keyword, loggedIn, onAddArticles, handleCardDelete, saveArticles, onOpenAuthorization, resAddArticle }) {
     const [nextThree, setNextThree] = React.useState(3);
     const [btnHide, setBtnHide] = React.useState(true)
 
@@ -31,6 +31,8 @@ function Results({ articles, keyword, loggedIn, onAddArticles, handleCardDelete,
             handleCardDelete={handleCardDelete}
             saveArticles={saveArticles}
             keywordResArticles={keywordResArticles}
+            onOpenAuthorization={onOpenAuthorization}
+            resAddArticle={resAddArticle}
             />
             {btnHide ? <button onClick={handleClick} className="results__btn" aria-label="Кнопка добавления карточек">
                 Показать еще
