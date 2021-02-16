@@ -25,7 +25,7 @@ function App() {
     const [isSavedMenuOpen, setIsSavedMenuOpen] = React.useState(false);
 
     // стейты для авторизации
-    const [loggedIn, setLoggedIn] = React.useState(false);
+    const [loggedIn, setLoggedIn] = React.useState(null);
     const [currentUser, setCurrentUser] = React.useState({});
 
     // в случае удачной регистрации открывает попап с сообщением
@@ -72,6 +72,9 @@ function App() {
                 })
                 .catch((err) => console.error(err));
         }
+        // else{
+        //     setLoggedIn(false);
+        // }
     };
 
     React.useEffect(() => {
@@ -161,8 +164,12 @@ function App() {
         setCurrentUser({});
         setLoggedIn(false);
         localStorage.removeItem("articles");
-        setArticles([]);
-    };
+        setArticles([])
+        // if(loggedIn === null){
+        //     return <div>Loader</div>
+        // }
+    }
+    
 
     // публикация карточки
     function handleAddArticles({ keyword, article }) {
