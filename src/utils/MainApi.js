@@ -56,7 +56,7 @@ class Api {
 }
 
 const MainApi = new Api({
-  baseUrl: "http://api.newexplorer.students.nomoreparties.xyz",
+  baseUrl: "http://api.new-sprint.students.nomoreparties.space/",
 
   headers: {
       authorization: `Bearer ${localStorage.getItem("jwt")}`,

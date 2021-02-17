@@ -1,4 +1,4 @@
-const BASE_URL = "http://api.newexplorer.students.nomoreparties.xyz";
+const BASE_URL = "http://api.new-sprint.students.nomoreparties.space/";
 
 
 const checkResponse = (response) =>
