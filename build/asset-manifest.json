@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "./static/css/main.88b8d6c2.chunk.css",
+    "main.js": "./static/js/main.edf6be8a.chunk.js",
+    "main.js.map": "./static/js/main.edf6be8a.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.b139dd41.js",
+    "runtime-main.js.map": "./static/js/runtime-main.b139dd41.js.map",
+    "static/js/2.2662ac5b.chunk.js": "./static/js/2.2662ac5b.chunk.js",
+    "static/js/2.2662ac5b.chunk.js.map": "./static/js/2.2662ac5b.chunk.js.map",
+    "static/js/3.b22743af.chunk.js": "./static/js/3.b22743af.chunk.js",
+    "static/js/3.b22743af.chunk.js.map": "./static/js/3.b22743af.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.88b8d6c2.chunk.css.map": "./static/css/main.88b8d6c2.chunk.css.map",
+    "static/js/2.2662ac5b.chunk.js.LICENSE.txt": "./static/js/2.2662ac5b.chunk.js.LICENSE.txt",
+    "static/media/index.css": "./static/media/RobotoSlab-Regular.f767c6fa.woff",
+    "static/media/NewsCard.css": "./static/media/trash.6ef46592.svg",
+    "static/media/MenuButton.css": "./static/media/close.f5662f4c.svg",
+    "static/media/Navigation.css": "./static/media/menu.0a6ddfdb.svg",
+    "static/media/facebook.8fbf7749.svg": "./static/media/facebook.8fbf7749.svg",
+    "static/media/Main.css": "./static/media/georgia.ec9ce59c.jpg",
+    "static/media/git.0719b4bc.svg": "./static/media/git.0719b4bc.svg",
+    "static/media/greta.0a21f444.jpg": "./static/media/greta.0a21f444.jpg",
+    "static/media/logout.4fb874ec.svg": "./static/media/logout.4fb874ec.svg",
+    "static/media/logout_white.1f2ed6dd.svg": "./static/media/logout_white.1f2ed6dd.svg",
+    "static/media/NotFound.css": "./static/media/not-found_v1.39241ac1.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b139dd41.js",
+    "static/js/2.2662ac5b.chunk.js",
+    "static/css/main.88b8d6c2.chunk.css",
+    "static/js/main.edf6be8a.chunk.js"
+  ]
+}
